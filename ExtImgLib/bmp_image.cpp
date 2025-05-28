@@ -10,8 +10,12 @@ using namespace std;
 
 namespace img_lib {
 
-static int GetBMPStride(int w) {
-    return 4 * ((w * 3 + 3) / 4);
+constexpr uint16_t BMP_COLOR_DEPTH = 24;
+
+static int GetBMPStride(int width) {
+    const int bytes_per_pixel = BMP_COLOR_DEPTH / 8;
+    const int dword_alignment = 4;
+    return dword_alignment * ((width * bytes_per_pixel + (dword_alignment - 1)) / dword_alignment);
 }
 
 PACKED_STRUCT_BEGIN BitmapInfoHeader {
@@ -23,7 +27,7 @@ PACKED_STRUCT_BEGIN BitmapInfoHeader {
     int32_t biWidth = 0;
     int32_t biHeight = 0;
     uint16_t biPlanes = 1;
-    uint16_t biColorDepth = 24;
+    uint16_t biColorDepth = BMP_COLOR_DEPTH;
     uint32_t biCompressionValue = 0;
     uint32_t biDataSize = 0;
     int32_t biXResolution = 11811;
@@ -78,8 +82,20 @@ Image LoadBMP(const Path& file) {
     BitmapFileHeader file_header(0, 0);
     BitmapInfoHeader info_header(0, 0);
 
-    ifs.read(reinterpret_cast<char*>(&file_header), sizeof(file_header));
-    ifs.read(reinterpret_cast<char*>(&info_header), sizeof(info_header));
+    if (!ifs.read(reinterpret_cast<char*>(&file_header), sizeof(file_header))) {
+        cerr << "Error: Failed to read BMP file header from " << file << endl;
+        return {};
+    }
+
+    if (file_header.bfType[0] != 'B' || file_header.bfType[1] != 'M') {
+        cerr << "Error: Not a BMP file. Invalid signature in " << file << endl;
+        return {};
+    }
+
+    if (!ifs.read(reinterpret_cast<char*>(&info_header), sizeof(info_header))) {
+        cerr << "Error: Failed to read BMP info header from " << file << endl;
+        return {};
+    }
 
     const int width = info_header.biWidth;
     const int height = info_header.biHeight;
