@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/cmake_install.cmake",
+		"D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/ImgLibBuildDir/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

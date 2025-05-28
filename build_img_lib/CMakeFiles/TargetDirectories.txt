@@ -1,0 +1,6 @@
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/CMakeFiles/imgconv.dir
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/CMakeFiles/edit_cache.dir
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/CMakeFiles/rebuild_cache.dir
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/ImgLibBuildDir/CMakeFiles/ImgLib.dir
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/ImgLibBuildDir/CMakeFiles/edit_cache.dir
+D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib/ImgLibBuildDir/CMakeFiles/rebuild_cache.dir
