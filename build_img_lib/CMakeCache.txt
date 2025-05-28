@@ -220,7 +220,7 @@ ImgLib_IS_TOP_LEVEL:STATIC=OFF
 ImgLib_SOURCE_DIR:STATIC=D:/Artem/Cpp-Course/cpp-image-converter/ExtImgLib
 
 //LibJPEG static library directory
-LIBJPEG_DIR:STRING=D:/Artem/Cpp-Course/cpp-image-converter/JPEGLib
+LIBJPEG_DIR:STRING=D:\Artem\Cpp-Course\cpp-image-converter\JPEGLib
 
 //Value Computed by CMake
 Negate_BINARY_DIR:STATIC=D:/Artem/Cpp-Course/cpp-image-converter/build_img_lib
