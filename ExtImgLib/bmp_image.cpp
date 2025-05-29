@@ -108,7 +108,10 @@ Image LoadBMP(const Path& file) {
 
     for (int y = height - 1; y >= 0; --y) {
         Color* line = result.GetLine(y);
-        ifs.read(buff.data(), stride);
+        if (!ifs.read(buff.data(), stride)) {
+            cerr << "Error: Failed to read pixel data for scanline " << y << " from " << file << endl;
+            return {};
+        }
 
         for (int x = 0; x < width; ++x) {
             line[x].b = static_cast<byte>(buff[x * 3 + 0]);
